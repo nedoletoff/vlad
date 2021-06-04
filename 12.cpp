@@ -40,7 +40,7 @@ int String::len()
 
 int String::add_string(char* str)
 {
-	std::cout << "add string started\n";
+//	std::cout << "add string started\n";
 	char* temp = new char[size];
 	int s = size;
 	for (int i = 0; i < s; ++i)
@@ -58,7 +58,7 @@ int String::add_string(char* str)
 		string[i] = str[i - size];
 	std::cout << string;
 	delete [] temp;
-	std::cout << "add string done\n";
+//	std::cout << "add string done\n";
 	return 0;
 
 }
@@ -106,18 +106,18 @@ int String::remove(int n)
 
 void String::insert(char st)
 {
-//	std::cout << "insert started\n";
-	std::cout << st << std::endl;
-	char string1[2];
-	string1[0] = st;
-	string1[1] = '\0';
-//	while (size && string[size-1] == '\0')
-//		remove(size-1);
-	add_string(string1);
-//	std::cout << "insert done\n";
+	char* temp = new char [++size];
+	for (int i = 0; i < size - 1; ++i)
+		temp[i] = string[i];
+	temp[size] = st;
+	delete [] string;
+	string = new char[size];
+	for (int i = 0; i < size; ++i)
+		string[i] = temp[i];
+	delete [] temp;
 }
 
-void String::conc(String p)
+void String::conc(String& p)
 {
 //	while (size && string[size-1] == '\0')
 //		remove(size-1);

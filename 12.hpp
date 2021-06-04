@@ -17,5 +17,5 @@ class String
 		int remove(int);
 		void print();
 		void insert(char);
-		void conc(String);
+		void conc(String&);
 };
