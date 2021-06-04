@@ -38,7 +38,7 @@ int String::len()
 	return size;
 }
 
-int String::add_string(char* str)
+int String::add_string(char* str, int str_size)
 {
 //	std::cout << "add string started\n";
 	char* temp = new char[size];
@@ -46,17 +46,17 @@ int String::add_string(char* str)
 	for (int i = 0; i < s; ++i)
 		temp[i] = string[i];
 
-	size += strlen(str) + 1;
-	std::cout << size << " " << temp << "\n";
-	std::cout << size << " " << str << "\n\n\n";
+	if (str_size <= 0)
+		size += strlen(str) + 1;
+	else
+		size += str_size;
 	delete [] string;
 	string = new char[size];
 
 	for (int i = 0; i < s; ++i)
 		string[i] = temp[i];
 	for (int i = s; i < size; ++i)
-		string[i] = str[i - size];
-	std::cout << string;
+		string[i] = str[i - s];
 	delete [] temp;
 //	std::cout << "add string done\n";
 	return 0;
@@ -109,7 +109,7 @@ void String::insert(char st)
 	char* temp = new char [++size];
 	for (int i = 0; i < size - 1; ++i)
 		temp[i] = string[i];
-	temp[size] = st;
+	temp[size-1] = st;
 	delete [] string;
 	string = new char[size];
 	for (int i = 0; i < size; ++i)
@@ -119,9 +119,9 @@ void String::insert(char st)
 
 void String::conc(String& p)
 {
-//	while (size && string[size-1] == '\0')
-//		remove(size-1);
-	add_string(p.string);
+	while (size && string[size-1] == '\0')
+		remove(size-1);
+	add_string(p.string, p.size);
 }
 
 void String::print()

@@ -12,7 +12,7 @@ class String
 		String& operator=(String&);
 
 		int len();
-		int add_string(char*);
+		int add_string(char* str, int str_size = -1);
 		int remove(int, int);
 		int remove(int);
 		void print();
