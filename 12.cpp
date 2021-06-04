@@ -68,13 +68,14 @@ int String::remove(int f, int l)
 	if  (!((l > f) && l < size))
 		return -1;
 
-	size = size - l + f;
+	size = size - l + f + 2;
 	char* temp = new char[size];
+	int k = 0;
 	for (int i = 0; i < size; ++i)
 		if (i >= f && i < l)
 			continue;
 		else
-			temp[i] = string[i];
+			temp[k++] = string[i];
 	delete [] string;
 	
 	string = new char[size];
@@ -95,8 +96,7 @@ int String::remove(int n)
 		if (i != n)
 			temp[i] = string[i];
 	delete [] string;
-	--size;
-	string = new char[size];
+	string = new char[--size];
 	for (int i = 0; i < size; ++i)
 		string[i] = temp[i];
 	delete [] temp;

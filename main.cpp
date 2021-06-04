@@ -6,7 +6,7 @@ int main()
 	std::cout << "Start\n";
 	String test1;
 	String test2;
-	char text[] = "Hello ";
+	char text[] = "Helloff ";
 
 	std::cout << "Insert test1\n";
 	test1.insert('d');
@@ -17,7 +17,7 @@ int main()
 	test2.print();
 
 	std::cout << "Remove test2\n";
-	test2.remove(2, 4);
+	test2.remove(2, 5);
 	test2.print();
 	
 	std::cout << "test3 = test1\n";
